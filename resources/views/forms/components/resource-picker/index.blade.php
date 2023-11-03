@@ -62,7 +62,6 @@
                         x-on:click="openModal"
                     >
                         @if ($previewComponent = $configuration->getPreviewComponent())
-
                             <x-dynamic-component :component="$previewComponent" :record="$item"/>
                         @else
                             <x-filament::section :compact="true">

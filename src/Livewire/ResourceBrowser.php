@@ -147,7 +147,6 @@ class ResourceBrowser extends Component implements HasForms, HasTable
 
         // Apply search constraints for the results
         if (filled($selectedSearchModifiers['term'])) {
-            ray()->showQueries();
             $isFirst = true;
             $query->where(fn (Builder $query): Builder => $this->applyResultsSearchAttributeConstraint(
                 $query,
@@ -157,13 +156,9 @@ class ResourceBrowser extends Component implements HasForms, HasTable
             ));
         }
 
-        $ret = $query
+        return $query
             ->get()
             ->sortBy(fn (Model $model) => array_search($model->getKey(), $this->selected->all()));
-
-        ray()->stopShowingQueries();
-
-        return $ret;
     }
 
     public function getConfigurationIdentifier(): ResourcePickerConfiguration
