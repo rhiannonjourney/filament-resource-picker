@@ -1,10 +1,10 @@
 {
-    "name": "unexpectedjourney/filament-resource-picker",
+    "name": "unexpectedjourney/filament-modal-resource-picker",
     "description": "A powerful resource picker for Filament.",
     "keywords": [
         "unexpectedjourney",
         "laravel",
-        "filament-resource-picker"
+        "filament-modal-resource-picker"
     ],
     "homepage": "https://github.com/unexpectedjourney/filament-resource-picker",
     "support": {
