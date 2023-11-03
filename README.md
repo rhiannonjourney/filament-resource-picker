@@ -238,7 +238,7 @@ security vulnerabilities.
 
 ## Credits
 
-- [Craig](https://github.com/craigkuhns)
+- [Rhiannon Journey](https://github.com/rhiannonjourney)
 - [All Contributors](../../contributors)
 
 ## License
