@@ -16,7 +16,7 @@ using your existing resources in modal.
 You can install the package via composer:
 
 ```bash
-composer require unexpectedjourney/filament-resource-picker
+composer require unexpectedjourney/filament-modal-resource-picker
 ```
 
 ## Usage
