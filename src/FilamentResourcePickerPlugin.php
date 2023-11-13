@@ -3,7 +3,6 @@
 namespace UnexpectedJourney\FilamentResourcePicker;
 
 use Filament\Contracts\Plugin;
-use Filament\Facades\Filament;
 use Filament\Panel;
 use Filament\Support\Facades\FilamentView;
 use Livewire\Livewire;
@@ -36,7 +35,7 @@ class FilamentResourcePickerPlugin implements Plugin
     {
         FilamentView::registerRenderHook(
             'panels::page.start',
-            fn(): string => view('resource-picker::forms.components.resource-picker.modal')->render()
+            fn (): string => view('resource-picker::forms.components.resource-picker.modal')->render()
         );
     }
 
