@@ -11,6 +11,8 @@ use UnexpectedJourney\FilamentResourcePicker\Livewire\ResourceBrowser;
 
 class FilamentResourcePickerPlugin implements Plugin
 {
+    protected array $registerAdditionalResources = [];
+
     public static function get(): static
     {
         /** @var static $plugin */
@@ -41,8 +43,24 @@ class FilamentResourcePickerPlugin implements Plugin
     {
         Livewire::component('resource-picker::resource-browser', ResourceBrowser::class);
 
-        foreach ($panel->getResources() as $resource) {
+        foreach (array_merge($panel->getResources(), $this->registerAdditionalResources) as $resource) {
             ResourcePickerManager::registerResource($resource);
         }
+    }
+
+    public function registerAdditionalResource(string $resource): static
+    {
+        $this->registerAdditionalResources[] = $resource;
+
+        return $this;
+    }
+
+    public function registerAdditionalResources(array $resources, bool $merge = true): static
+    {
+        $this->registerAdditionalResources = $merge
+            ? array_merge($this->registerAdditionalResources, $resources)
+            : $resources;
+
+        return $this;
     }
 }
