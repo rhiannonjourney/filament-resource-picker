@@ -91,56 +91,57 @@
                 $resourceLabel = $resource::getModelLabel();
             @endphp
 
-            <x-filament::modal
-                width="full"
-                :id="$configuration->getModalId()"
-                x-data="{ statePath: null }"
-                x-on:open-modal.window="
-                    if ($event.detail.id !== '{{ $configuration->getModalId() }}') {
-                        return
-                    }
+            <div x-data="{ statePath: null }">
+                <x-filament::modal
+                    width="full"
+                    :id="$configuration->getModalId()"
+                    x-on:open-modal.window="
+                        if ($event.detail.id !== '{{ $configuration->getModalId() }}') {
+                            return
+                        }
 
-                    statePath = $event.detail.getStatePath
-                    $store.resourceBrowser.initResourceFromEvent('{{ $configuration->getAlpineStoreId() }}', $event.detail)
+                        statePath = $event.detail.getStatePath
+                        $store.resourceBrowser.initResourceFromEvent('{{ $configuration->getAlpineStoreId() }}', $event.detail)
 
-                    open()
-                "
-            >
-                <div>
-                    <div class="relative h-full max-h-[80vh] overflow-y-scroll">
-                        <livewire:resource-picker::resource-browser
-                            :defer="true"
-                            :resource="$configuration->resource"
-                            :wire:key="$configuration->getResourceId().'-resource-picker'"
-                        />
+                        open()
+                    "
+                >
+                    <div>
+                        <div class="relative h-full max-h-[80vh] overflow-y-scroll">
+                            <livewire:resource-picker::resource-browser
+                                :defer="true"
+                                :resource="$configuration->resource"
+                                :wire:key="$configuration->getResourceId().'-resource-picker'"
+                            />
+                        </div>
                     </div>
-                </div>
 
-                <x-slot name="footer">
-                    <div
-                        @class([
-                            'flex space-x-2',
-                            'justify-start' => config('filament.layout.forms.actions.alignment') === 'left',
-                            'justify-center' => config('filament.layout.forms.actions.alignment') === 'center',
-                            'justify-end' => config('filament.layout.forms.actions.alignment') === 'right',
-                        ])
-                    >
-                        <x-filament::button
-                            outlined
-                            color="gray"
-                            x-on:click="$dispatch('close-modal', {id: '{{ $configuration->getModalId() }}'})"
+                    <x-slot name="footer">
+                        <div
+                            @class([
+                                'flex space-x-2',
+                                'justify-start' => config('filament.layout.forms.actions.alignment') === 'left',
+                                'justify-center' => config('filament.layout.forms.actions.alignment') === 'center',
+                                'justify-end' => config('filament.layout.forms.actions.alignment') === 'right',
+                            ])
                         >
-                            Cancel
-                        </x-filament::button>
+                            <x-filament::button
+                                outlined
+                                color="gray"
+                                x-on:click="$dispatch('close-modal', {id: '{{ $configuration->getModalId() }}'})"
+                            >
+                                Cancel
+                            </x-filament::button>
 
-                        <x-filament::button
-                            x-on:click="$dispatch('close-modal', {id: '{{ $configuration->getModalId() }}', statePath: statePath})"
-                        >
-                            Update and Close
-                        </x-filament::button>
-                    </div>
-                </x-slot>
-            </x-filament::modal>
+                            <x-filament::button
+                                x-on:click="$dispatch('close-modal', {id: '{{ $configuration->getModalId() }}', statePath: statePath})"
+                            >
+                                Update and Close
+                            </x-filament::button>
+                        </div>
+                    </x-slot>
+                </x-filament::modal>
+            </div>
         @endforeach
     </div>
 @endonce
