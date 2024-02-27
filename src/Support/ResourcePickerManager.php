@@ -34,7 +34,7 @@ class ResourcePickerManager
         return $this->resources;
     }
 
-    public function configure(array | string $configurations, Closure $callback = null): static
+    public function configure(array | string $configurations, ?Closure $callback = null): static
     {
         if (! is_array($configurations)) {
             throw_if(

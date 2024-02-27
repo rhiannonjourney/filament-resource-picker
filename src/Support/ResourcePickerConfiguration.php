@@ -18,7 +18,7 @@ class ResourcePickerConfiguration
     {
     }
 
-    public static function make(string $resource, string $identifier = null): static
+    public static function make(string $resource, ?string $identifier = null): static
     {
         return new static($resource, $identifier ?? $resource);
     }
