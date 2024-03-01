@@ -12,6 +12,7 @@ use UnexpectedJourney\FilamentResourcePicker\Livewire\ResourceBrowser;
 class FilamentResourcePickerPlugin implements Plugin
 {
     protected array $registerAdditionalResources = [];
+    protected string $resourceBrowserComponent = ResourceBrowser::class;
 
     public static function get(): static
     {
@@ -35,17 +36,22 @@ class FilamentResourcePickerPlugin implements Plugin
     {
         FilamentView::registerRenderHook(
             'panels::page.start',
-            fn (): string => view('resource-picker::forms.components.resource-picker.modal')->render()
+            fn(): string => view('resource-picker::forms.components.resource-picker.modal')->render()
         );
     }
 
     public function register(Panel $panel): void
     {
-        Livewire::component('resource-picker::resource-browser', ResourceBrowser::class);
+        Livewire::component('resource-picker::resource-browser', $this->getResourceBrowserComponent());
 
         foreach (array_merge($panel->getResources(), $this->registerAdditionalResources) as $resource) {
             ResourcePickerManager::registerResource($resource);
         }
+    }
+
+    public function getResourceBrowserComponent(): string
+    {
+        return $this->resourceBrowserComponent;
     }
 
     public function registerAdditionalResource(string $resource): static
@@ -61,6 +67,12 @@ class FilamentResourcePickerPlugin implements Plugin
             ? array_merge($this->registerAdditionalResources, $resources)
             : $resources;
 
+        return $this;
+    }
+
+    public function resourceBrowserComponent(string $resourceBrowserComponent): static
+    {
+        $this->resourceBrowserComponent = $resourceBrowserComponent;
         return $this;
     }
 }
