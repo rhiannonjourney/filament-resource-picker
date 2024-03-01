@@ -114,7 +114,8 @@ class ResourceBrowser extends Page implements HasForms, HasTable
                 default => null
             })
             ->queryStringIdentifier(str($resource::getModelLabel())->camel()->append('Picker'))
-            ->filters($resourceTable->getFilters());
+            ->filters($resourceTable->getFilters())
+            ->groups($resourceTable->getGroups());
     }
 
     public function render(): View
