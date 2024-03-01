@@ -37,7 +37,9 @@
             {{ str($configuration->getPluralResourceLabel())->title() }}
         </h2>
 
-        <div>
+        <div class="space-y-6">
+            {{ \Filament\Support\Facades\FilamentView::renderHook('resource-picker::resource-browser.table.before', scopes: $this->getRenderHookScopes()) }}
+
             {{ $this->table }}
         </div>
     </div>
