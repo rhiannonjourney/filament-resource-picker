@@ -83,7 +83,7 @@
     </script>
 
     {{-- The Modal --}}
-    <div class="relative z-[100] h-0">
+    <div class="relative h-0">
         @foreach(\UnexpectedJourney\FilamentResourcePicker\Facades\ResourcePickerManager::getResources() as $resource)
             @php
                 /** @var \UnexpectedJourney\FilamentResourcePicker\Support\ResourcePickerConfiguration $configuration */
