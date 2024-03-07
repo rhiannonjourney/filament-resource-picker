@@ -91,7 +91,7 @@
                 $resourceLabel = $resource::getModelLabel();
             @endphp
 
-            <div x-data="{ statePath: null }">
+            <div x-data="{ statePath: null }" class="h-0">
                 <x-filament::modal
                     width="full"
                     :id="$configuration->getModalId()"
