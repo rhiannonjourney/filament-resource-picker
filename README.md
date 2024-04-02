@@ -222,6 +222,58 @@ Your Blade component can access the selected record by adding a `record`
 property as
 documented https://laravel.com/docs/10.x/blade#data-properties-attributes.
 
+### Configuring a custom ResourceBrowser component
+
+In some cases you may want to extend the `ResourceBrowser` component to
+add your own functionality, for instance adding support for the
+[Advanced Table](https://filamentphp.com/plugins/kenneth-sese-advanced-tables] plugin)
+to the table.
+
+First create your custom `ResourceBrowser` component making sure to
+extend `UnexpectedJourney\FilamentResourcePicker\Livewire\ResourceBrowser`.
+
+```PHP
+use UnexpectedJourney\FilamentResourcePicker\Livewire\ResourceBrowser;
+
+class CustomResourceBrowser extends esourceBrowser
+{
+    // Add any custom functionality
+}
+```
+
+Then configure the plugin to use your custom `ResourceBrowser` in your plugin
+Panel provider.
+
+```php
+use UnexpectedJourney\FilamentResourcePicker\FilamentResourcePickerPlugin;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        ->plugins([
+            FilamentResourcePickerPlugin::make()
+                ->resourceBrowserComponent(CustomResourceBrowser::class),
+        ])
+    ])
+}
+```
+
+### Render Hooks
+
+Filament Resource Picker exposes some render hooks to allow you to inject custom
+HTML into the UI. View
+the [Filament documentation](https://filamentphp.com/docs/3.x/support/render-hooks#registering-render-hooks)
+for how to register a render hook.
+
+#### Available Render Hooks
+
+```PHP
+use \UnexpectedJourney\FilamentResourcePicker\Support\ResourcePickerRenderHook
+```
+
+* `ResourcePickerRenderHook::RESOURCE_BROWSER_TABLE_BEFORE` - Before the table
+  of the Resource Browser
+
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed
