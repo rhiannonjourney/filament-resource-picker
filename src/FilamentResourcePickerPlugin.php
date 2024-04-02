@@ -12,6 +12,7 @@ use UnexpectedJourney\FilamentResourcePicker\Livewire\ResourceBrowser;
 class FilamentResourcePickerPlugin implements Plugin
 {
     protected array $registerAdditionalResources = [];
+
     protected string $resourceBrowserComponent = ResourceBrowser::class;
 
     public static function get(): static
@@ -36,7 +37,7 @@ class FilamentResourcePickerPlugin implements Plugin
     {
         FilamentView::registerRenderHook(
             'panels::page.start',
-            fn(): string => view('resource-picker::forms.components.resource-picker.modal')->render()
+            fn (): string => view('resource-picker::forms.components.resource-picker.modal')->render()
         );
     }
 
@@ -73,6 +74,7 @@ class FilamentResourcePickerPlugin implements Plugin
     public function resourceBrowserComponent(string $resourceBrowserComponent): static
     {
         $this->resourceBrowserComponent = $resourceBrowserComponent;
+
         return $this;
     }
 }

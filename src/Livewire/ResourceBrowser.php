@@ -95,21 +95,21 @@ class ResourceBrowser extends Page implements HasForms, HasTable
         $resource = $this->resource;
         $resourceId = \UnexpectedJourney\FilamentResourcePicker\Support\get_resource_identifier($resource);
         $resourceTable = $resource::table(new Table($this));
-        $queryStringIdentifier = str(class_basename($resource)).'Picker';
+        $queryStringIdentifier = str(class_basename($resource)) . 'Picker';
 
         // Make each cell clickable to toggle its selection
         $columns = collect($resourceTable->getColumns())
-            ->map(fn(Column $column): Column => $column
-                ->extraCellAttributes(fn(Model $record): array => [
+            ->map(fn (Column $column): Column => $column
+                ->extraCellAttributes(fn (Model $record): array => [
                     'class' => 'cursor-pointer',
-                    'x-on:click.prevent' => '$store.resourceBrowser.toggleItemSelection("'.$record->getKey().'", "'.$resourceId.'")',
+                    'x-on:click.prevent' => '$store.resourceBrowser.toggleItemSelection("' . $record->getKey() . '", "' . $resourceId . '")',
                 ]))
             ->all();
 
         return $table
             ->query($resource::getEloquentQuery())
             ->columns($columns)
-            ->recordClasses(fn(Model $record): ?string => match (true) {
+            ->recordClasses(fn (Model $record): ?string => match (true) {
                 collect($this->selected)->contains($record->getKey()) => 'bg-primary-100 dark:bg-primary-800/50',
                 default => null
             })
@@ -149,7 +149,7 @@ class ResourceBrowser extends Page implements HasForms, HasTable
         // Apply search constraints for the results
         if (filled($selectedSearchModifiers['term'])) {
             $isFirst = true;
-            $query->where(fn(Builder $query): Builder => $this->applyResultsSearchAttributeConstraint(
+            $query->where(fn (Builder $query): Builder => $this->applyResultsSearchAttributeConstraint(
                 $query,
                 $selectedSearchModifiers['term'],
                 $configuration->getSearchColumns(),
@@ -159,7 +159,7 @@ class ResourceBrowser extends Page implements HasForms, HasTable
 
         return $query
             ->get()
-            ->sortBy(fn(Model $model) => array_search($model->getKey(), $this->selected->all()));
+            ->sortBy(fn (Model $model) => array_search($model->getKey(), $this->selected->all()));
     }
 
     public function getConfigurationIdentifier(): ResourcePickerConfiguration
@@ -207,7 +207,7 @@ class ResourceBrowser extends Page implements HasForms, HasTable
                         "%{$search}%",
                     );
                 },
-                fn(Builder $query): Builder => $query->when(
+                fn (Builder $query): Builder => $query->when(
                     str($searchAttribute)->contains('.'),
                     function (Builder $query) use (
                         $isForcedCaseInsensitive,
