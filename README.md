@@ -1,9 +1,9 @@
 # A powerful resource picker for Filament.
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/unexpectedjourney/filament-resource-picker.svg?style=flat-square)](https://packagist.org/packages/unexpectedjourney/filament-resource-picker)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/unexpectedjourney/filament-modal-resource-picker.svg?style=flat-square)](https://packagist.org/packages/unexpectedjourney/filament-modal-resource-picker)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/unexpectedjourney/filament-resource-picker/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/unexpectedjourney/filament-resource-picker/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/unexpectedjourney/filament-resource-picker/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/unexpectedjourney/filament-resource-picker/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/unexpectedjourney/filament-resource-picker.svg?style=flat-square)](https://packagist.org/packages/unexpectedjourney/filament-resource-picker)
+[![Total Downloads](https://img.shields.io/packagist/dt/unexpectedjourney/filament-modal-resource-picker.svg?style=flat-square)](https://packagist.org/packages/unexpectedjourney/filament-resource-picker)
 
 <img src="documentation/img/resource-picker.png" />
 
